@@ -20,6 +20,10 @@ module Billomat
 
         Billomat::Actions::Email.new(id, email_params).call
       end
+
+      def to_pdf
+        Billomat::Actions::Pdf.new(id).call
+      end
     end
   end
 end
