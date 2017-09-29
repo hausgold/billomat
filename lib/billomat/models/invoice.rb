@@ -15,6 +15,10 @@ module Billomat
         Billomat::Actions::Complete.new(id).call
       end
 
+      def cancel!
+        Billomat::Actions::Cancel.new(id).call
+      end
+
       def send_email(recipient)
         email_params = { recipients: { to: recipient } }
 
