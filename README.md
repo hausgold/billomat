@@ -1,4 +1,5 @@
 # Billomat
+[![Build Status](https://travis-ci.org/hausgold/billomat.svg?branch=master)](https://travis-ci.org/hausgold/billomat)
 
 This gem provides a Ruby API for [billomat.com](https://billomat.com) - an online accounting service.
 
