@@ -15,10 +15,18 @@ module Billomat
         Billomat::Actions::Complete.new(id).call
       end
 
+      def cancel!
+        Billomat::Actions::Cancel.new(id).call
+      end
+
       def send_email(recipient)
         email_params = { recipients: { to: recipient } }
 
         Billomat::Actions::Email.new(id, email_params).call
+      end
+
+      def to_pdf
+        Billomat::Actions::Pdf.new(id).call
       end
     end
   end

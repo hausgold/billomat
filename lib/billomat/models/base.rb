@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'ostruct'
+
 module Billomat
   module Models
     class Base
@@ -16,7 +18,7 @@ module Billomat
       end
 
       def initialize(data = {})
-        @data = data
+        @data = OpenStruct.new(data)
       end
 
       def save
@@ -29,7 +31,7 @@ module Billomat
           :post, self.class.base_path, wrapped_data
         ).run
 
-        @data = resp[self.class.resource_name]
+        @data = OpenStruct.new(resp[self.class.resource_name])
 
         true
       end
@@ -54,16 +56,16 @@ module Billomat
       end
 
       def wrapped_data
-        { self.class.resource_name => @data }
+        { self.class.resource_name => @data.to_h }
       end
 
       def method_missing(method, *args, &block)
-        return @data[method.to_s] if @data.keys.include?(method.to_s)
+        return @data[method] if @data.to_h.keys.include?(method)
         super
       end
 
       def respond_to_missing?(method, include_privat = false)
-        @data.keys.include?(method.to_s) || super
+        @data.to_h.keys.include?(method.to_s) || super
       end
     end
   end

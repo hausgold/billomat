@@ -25,6 +25,7 @@ module Billomat
       )
 
       raise GatewayError, resp.body if resp.code > 299
+      return nil if resp.body.empty?
 
       JSON.parse(resp.body)
     end
