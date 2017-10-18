@@ -7,5 +7,8 @@ require 'billomat/actions/cancel'
 require 'billomat/actions/uncancel'
 
 module Billomat
+  ##
+  # Actions are API calls that do not directly represent a resource.
+  # They are mostly non-RESTful actions that are called on a resources.
   module Actions; end
 end

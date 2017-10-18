@@ -2,17 +2,30 @@
 
 module Billomat
   module Actions
+    ##
+    # This actions uncancels an canceld invoice.
+    #
+    # @example
+    #   Billomat::Actions::Uncancel.new('1235')
     class Uncancel
+      # @param [String] invoice_id The invoice ID
+      #
+      # @return [Billomat::Actions::Uncancel]
       def initialize(invoice_id)
         @invoice_id = invoice_id
       end
 
+      ##
+      # Calls the gateway
+      #
+      # @return [TrueClass]
       def call
         Billomat::Gateway.new(:put, path).run
 
         true
       end
 
+      # @return [String] The path for the uncancel action
       def path
         "/invoices/#{@invoice_id}/uncancel"
       end
