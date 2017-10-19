@@ -15,11 +15,15 @@ gem 'billomat'
 
 And then execute:
 
-    $ bundle
+```bash
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install billomat
+```bash
+$ gem install billomat
+```
 
 ## Usage
 
@@ -27,7 +31,7 @@ Or install it yourself as:
 
 The configuration takes two settings: `api_key` and `subdomain`. The latter is e.g. the name of your organization.
 
-```
+```ruby
 Billomat.configure do |config|
   config.subdomain = 'your-company'
   config.api_key   = 'a3b148a61cb642389b4f9953f6233f20'
@@ -38,7 +42,7 @@ end
 
 Currently there is basic support for the models `Invoice`, `Client`, `InvoicePayment`, `InvoiceItem`
 
-```
+```ruby
 Billomat::Models::Invoice.where(invoice_number: 'RE1234')
 => [#<Billomat::Models::Invoice:0x005574b58d6510 ...]
 
@@ -52,7 +56,6 @@ client.save
 client.delete
 => true
 ```
-
 
 ## Development
 
