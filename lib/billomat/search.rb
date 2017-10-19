@@ -26,7 +26,7 @@ module Billomat
     #
     # @return [Array<Billomat::Model::Base>]
     def run
-      return [] if @hash.compact.empty?
+      return [] if @hash.reject { |k, v| v.nil? }.empty?
       to_array(Billomat::Gateway.new(:get, path).run)
     end
 
