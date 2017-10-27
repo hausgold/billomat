@@ -95,6 +95,14 @@ module Billomat
       end
 
       ##
+      # Returns the object with the right JSON structure
+      #
+      # @return [Hash] The objects data
+      def as_json(options = nil)
+        @data.to_h
+      end
+
+      ##
       # All values in the @data hash can be accessed like a 'normal' method
       #
       # @example
