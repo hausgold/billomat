@@ -1,5 +1,7 @@
 require "simplecov"
-SimpleCov.start
+SimpleCov.start do
+  add_filter 'spec'
+end
 
 require "bundler/setup"
 require "billomat"
@@ -16,6 +18,8 @@ RSpec.configure do |config|
   end
 end
 
+# Set Billomat configuration
+# Is available in all Specs
 Billomat.configure do |config|
   config.api_key = '1234'
   config.subdomain = "example"

@@ -11,10 +11,30 @@ RSpec.describe Billomat::Search do
   let(:gateway_double) { instance_double(gateway) }
 
   let(:multiple) do
-    { 'clients' => { 'client' => [{ id: 1 }, { id: 2 }, { id: 3 }] } }
+    {
+      'clients' => {
+        'client' => [{ id: 1 }, { id: 2 }, { id: 3 }],
+        '@total' => '3'
+      }
+    }
   end
 
-  let(:single) { { 'clients' => { 'client' => { id: 1 }, '@total' => 1 } } }
+  let(:single) do
+    {
+      'clients' => {
+        'client' => { id: 1 },
+        '@total' => '1'
+      }
+    }
+  end
+
+  let(:nothing) do
+    {
+      "clients"=> {
+        "@page" => "1", "@per_page"=>"100", "@total"=>"0"
+      }
+    }
+  end
 
   describe '#run' do
     before do
@@ -23,7 +43,7 @@ RSpec.describe Billomat::Search do
 
     context 'when nothing found' do
       before do
-        allow(gateway_double).to receive(:run).and_return(nil)
+        allow(gateway_double).to receive(:run).and_return(nothing)
       end
 
       it 'returns an empty array' do
@@ -39,6 +59,10 @@ RSpec.describe Billomat::Search do
       it 'returns an array with one object' do
         expect(search.run).to be_a(Array)
       end
+
+      it 'has array length of 1' do
+        expect(search.run.count).to eq(1)
+      end
     end
 
     context 'when multiple records are found' do
@@ -48,6 +72,10 @@ RSpec.describe Billomat::Search do
 
       it 'returns an array with objects' do
         expect(search.run).to be_a(Array)
+      end
+
+      it 'has array length of 3' do
+        expect(search.run.count).to eq(3)
       end
     end
   end

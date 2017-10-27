@@ -45,7 +45,7 @@ module Billomat
       #
       # @return [TrueClass]
       def save
-        return create if id.blank?
+        return create if id.nil?
         update
       end
 

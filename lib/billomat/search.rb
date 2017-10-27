@@ -23,6 +23,7 @@ module Billomat
 
     ##
     # Runs the query and calls the gateway
+    # Currently it will always return an empty array when no query is provided
     #
     # @return [Array<Billomat::Model::Base>]
     def run
