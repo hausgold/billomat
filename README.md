@@ -1,5 +1,6 @@
 # Billomat
 [![Build Status](https://travis-ci.org/hausgold/billomat.svg?branch=master)](https://travis-ci.org/hausgold/billomat)
+[![Gem Version](https://badge.fury.io/rb/billomat.svg)](https://badge.fury.io/rb/billomat)
 [![Maintainability](https://api.codeclimate.com/v1/badges/49baf848f42a2e5b95db/maintainability)](https://codeclimate.com/github/hausgold/billomat/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/49baf848f42a2e5b95db/test_coverage)](https://codeclimate.com/github/hausgold/billomat/test_coverage)
 
@@ -56,6 +57,11 @@ client.save
 client.delete
 => true
 ```
+
+### Documentation
+
+The RubyDoc is available [here](http://www.rubydoc.info/gems/billomat/0.1.2).
+
 
 ## Development
 
