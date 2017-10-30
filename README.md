@@ -1,4 +1,5 @@
-# Billomat
+![Billomat](doc/assets/project.png)
+
 [![Build Status](https://travis-ci.org/hausgold/billomat.svg?branch=master)](https://travis-ci.org/hausgold/billomat)
 [![Gem Version](https://badge.fury.io/rb/billomat.svg)](https://badge.fury.io/rb/billomat)
 [![Maintainability](https://api.codeclimate.com/v1/badges/49baf848f42a2e5b95db/maintainability)](https://codeclimate.com/github/hausgold/billomat/maintainability)
