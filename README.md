@@ -61,7 +61,7 @@ client.delete
 
 ### Documentation
 
-The RubyDoc is available [here](http://www.rubydoc.info/gems/billomat/0.1.2).
+The RubyDoc is available [here](http://www.rubydoc.info/gems/billomat).
 
 
 ## Development
