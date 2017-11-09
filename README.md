@@ -31,12 +31,15 @@ $ gem install billomat
 
 ### Configuration
 
-The configuration takes two settings: `api_key` and `subdomain`. The latter is e.g. the name of your organization.
+The billomat gem can be easily configured.
+If you're using Rails you might want to put this in your `application.rb`
+or inside an initializer.
 
 ```ruby
 Billomat.configure do |config|
-  config.subdomain = 'your-company'
-  config.api_key   = 'a3b148a61cb642389b4f9953f6233f20'
+  config.subdomain = 'example'     # Subdomain, e.g. example.billomat.net
+  config.api_key   = '4aefdc...'   # API key
+  config.timeout   = 5             # timeout in seconds
 end
 ```
 

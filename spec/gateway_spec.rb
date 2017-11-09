@@ -25,7 +25,8 @@ RSpec.describe Billomat::Gateway do
         expect(RestClient::Request)
           .to have_received(:execute).with(hash_including({
           method: :get,
-          url: 'https://example.billomat.net/api/clients'
+          url: 'https://example.billomat.net/api/clients',
+          timeout: 5
         }))
       end
     end
