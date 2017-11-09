@@ -2,6 +2,6 @@
 
 module Billomat
   class Configuration
-    attr_accessor :api_key, :subdomain
+    attr_accessor :api_key, :subdomain, :timeout
   end
 end

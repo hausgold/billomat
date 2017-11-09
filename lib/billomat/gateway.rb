@@ -54,7 +54,7 @@ module Billomat
 
     # @return [Integer]
     def timeout
-      5
+      config.timeout || 5
     end
 
     # @return [Hash] The headers for the request.
