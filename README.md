@@ -45,7 +45,12 @@ end
 
 ### Basic usage
 
-Currently there is basic support for the models `Invoice`, `Client`, `InvoicePayment`, `InvoiceItem`
+Currently there is basic support for the models:
+* `Invoice`
+* `Client`
+* `InvoicePayment`
+* `InvoiceItem`
+* `Contact`
 
 ```ruby
 Billomat::Models::Invoice.where(invoice_number: 'RE1234')
