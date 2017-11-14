@@ -5,6 +5,7 @@ require 'billomat/models/client'
 require 'billomat/models/invoice'
 require 'billomat/models/invoice_item'
 require 'billomat/models/invoice_payment'
+require 'billomat/models/contact'
 
 module Billomat
   ##
