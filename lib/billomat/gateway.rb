@@ -33,18 +33,22 @@ module Billomat
     # Executes the API call
     # @return [Hash] The response body
     def run
-      resp = RestClient::Request.execute(
+      resp = response
+
+      raise GatewayError, resp.body if resp.code > 299
+      return nil if resp.body.empty?
+
+      JSON.parse(resp.body)
+    end
+
+    def response
+      RestClient::Request.execute(
         method:   method,
         url:      url,
         timeout:  timeout,
         headers:  headers,
         payload:  body.to_json
       )
-
-      raise GatewayError, resp.body if resp.code > 299
-      return nil if resp.body.empty?
-
-      JSON.parse(resp.body)
     end
 
     # @return [String] The complete URL for the request

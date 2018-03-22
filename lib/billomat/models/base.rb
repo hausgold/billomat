@@ -98,7 +98,7 @@ module Billomat
       # Returns the object with the right JSON structure
       #
       # @return [Hash] The objects data
-      def as_json(options = nil)
+      def as_json(_options = nil)
         @data.to_h
       end
 
