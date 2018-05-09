@@ -4,8 +4,17 @@
 [![Gem Version](https://badge.fury.io/rb/billomat.svg)](https://badge.fury.io/rb/billomat)
 [![Maintainability](https://api.codeclimate.com/v1/badges/49baf848f42a2e5b95db/maintainability)](https://codeclimate.com/github/hausgold/billomat/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/49baf848f42a2e5b95db/test_coverage)](https://codeclimate.com/github/hausgold/billomat/test_coverage)
+[![API docs](https://img.shields.io/badge/docs-API-blue.svg)](https://www.rubydoc.info/gems/billomat)
 
-This gem provides a Ruby API for [billomat.com](https://billomat.com) - an online accounting service.
+This gem provides a Ruby API for [billomat.com](https://billomat.com) - an
+online accounting service.
+
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Configuration](#configuration)
+  - [Basic usage](#basic-usage)
+- [Development](#development)
+- [Contributing](#contributing)
 
 ## Installation
 
@@ -67,17 +76,19 @@ client.delete
 => true
 ```
 
-### Documentation
-
-The RubyDoc is available [here](http://www.rubydoc.info/gems/billomat).
-
-
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install dependencies. Then, run
+`rake spec` to run the tests. You can also run `bin/console` for an interactive
+prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To install this gem onto your local machine, run `bundle exec rake install`. To
+release a new version, update the version number in `version.rb`, and then run
+`bundle exec rake release`, which will create a git tag for the version, push
+git commits and tags, and push the `.gem` file to
+[rubygems.org](https://rubygems.org).
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/hausgold/billomat.
+Bug reports and pull requests are welcome on GitHub at
+https://github.com/hausgold/billomat.
