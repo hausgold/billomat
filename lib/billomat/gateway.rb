@@ -66,11 +66,15 @@ module Billomat
       {
         'Accept'           => 'application/json',
         'Content-Type'     => 'application/json',
-        'X-BillomatApiKey' => config.api_key
-      }
+        'X-BillomatApiKey' => config.api_key,
+        'X-AppId'          => config.app_id,
+        'X-AppSecret'      => config.app_secret
+      }.reject { |_, val| val.nil? }
     end
 
     # @return [Billomat::Configuration] The global gem configuration
+    #
+    # :reek:UtilityFunction because it's a shorthand
     def config
       Billomat.configuration
     end

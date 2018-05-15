@@ -23,4 +23,6 @@ end
 Billomat.configure do |config|
   config.api_key = '1234'
   config.subdomain = 'example'
+  config.app_id = '51234'
+  config.app_secret = 'c3df6e3707be6afa684e0e35bde6d732'
 end
