@@ -46,9 +46,18 @@ or inside an initializer.
 
 ```ruby
 Billomat.configure do |config|
-  config.subdomain = 'example'     # Subdomain, e.g. example.billomat.net
-  config.api_key   = '4aefdc...'   # API key
-  config.timeout   = 5             # timeout in seconds
+  # Subdomain, e.g. example.billomat.net
+  config.subdomain = 'example'
+  # API key
+  config.api_key   = '4aefdc...'
+  # timeout in seconds
+  config.timeout   = 5
+
+  # You can also configure a registerd app to increase your
+  # API call limit as described here:
+  # https://www.billomat.com/en/api/basics/rate-limiting/
+  config.app_id = '12345'
+  config.app_secret = 'c3df...'
 end
 ```
 
