@@ -1,4 +1,4 @@
-![Billomat](doc/assets/project.png)
+![Billomat](doc/assets/project.svg)
 
 [![Build Status](https://travis-ci.org/hausgold/billomat.svg?branch=master)](https://travis-ci.org/hausgold/billomat)
 [![Gem Version](https://badge.fury.io/rb/billomat.svg)](https://badge.fury.io/rb/billomat)
