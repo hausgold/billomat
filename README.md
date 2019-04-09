@@ -2,8 +2,8 @@
 
 [![Build Status](https://travis-ci.org/hausgold/billomat.svg?branch=master)](https://travis-ci.org/hausgold/billomat)
 [![Gem Version](https://badge.fury.io/rb/billomat.svg)](https://badge.fury.io/rb/billomat)
-[![Maintainability](https://api.codeclimate.com/v1/badges/49baf848f42a2e5b95db/maintainability)](https://codeclimate.com/github/hausgold/billomat/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/49baf848f42a2e5b95db/test_coverage)](https://codeclimate.com/github/hausgold/billomat/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/21ac719680afa0a102c0/maintainability)](https://codeclimate.com/repos/5cac8ab2feb8e979a4008130/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/21ac719680afa0a102c0/test_coverage)](https://codeclimate.com/repos/5cac8ab2feb8e979a4008130/test_coverage)
 [![API docs](https://img.shields.io/badge/docs-API-blue.svg)](https://www.rubydoc.info/gems/billomat)
 
 This gem provides a Ruby API for [billomat.com](https://billomat.com) - an
