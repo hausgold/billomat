@@ -1,6 +1,6 @@
 ![Billomat](doc/assets/project.svg)
 
-[![Build Status](https://travis-ci.com/hausgold/billomat.svg?branch=master)](https://travis-ci.com/hausgold/billomat)
+[![Continuous Integration](https://github.com/hausgold/billomat/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/hausgold/billomat/actions/workflows/test.yml)
 [![Gem Version](https://badge.fury.io/rb/billomat.svg)](https://badge.fury.io/rb/billomat)
 [![Maintainability](https://api.codeclimate.com/v1/badges/21ac719680afa0a102c0/maintainability)](https://codeclimate.com/repos/5cac8ab2feb8e979a4008130/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/21ac719680afa0a102c0/test_coverage)](https://codeclimate.com/repos/5cac8ab2feb8e979a4008130/test_coverage)
