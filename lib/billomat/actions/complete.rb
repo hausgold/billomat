@@ -2,14 +2,12 @@
 
 module Billomat
   module Actions
-    ##
-    # Completes an invoice by calling the /complete path on a resource
+    # Completes an invoice by calling the /complete path on a resource.
     class Complete
-      ##
-      # Returns a Complete object
+      # Returns a Complete object.
       #
-      # @param [String] invoice_id The ID of the invoice
-      # @param [Hash] opts The options for this request
+      # @param invoice_id [String] the ID of the invoice
+      # @param opts [Hash] the options for this request
       # @return [Billomat::Actions::Complete]
       #
       # @example
@@ -19,8 +17,7 @@ module Billomat
         @opts = opts
       end
 
-      ##
-      # Calls the gateway
+      # Calls the gateway.
       #
       # @return [TrueClass]
       def call
@@ -29,15 +26,14 @@ module Billomat
         true
       end
 
-      ##
-      # The given options have to be wrapped
+      # The given options have to be wrapped.
       #
-      # @return [Hash] The payload for the complete request
+      # @return [Hash] the payload for the complete request
       def wrapped_data
         { complete: @opts }
       end
 
-      # @return [String] The complete path with the invoice_id
+      # @return [String] the complete path with the invoice_id
       def path
         "/invoices/#{@invoice_id}/complete"
       end

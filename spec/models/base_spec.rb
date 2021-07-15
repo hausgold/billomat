@@ -6,10 +6,8 @@ RSpec.describe Billomat::Models::Base do
   let(:base) { described_class.new(id: 123, foo: 'bar') }
 
   before do
-    allow(described_class)
-      .to receive(:base_path).and_return('/bases')
-    allow(described_class)
-      .to receive(:resource_name).and_return('base')
+    allow(described_class).to receive(:base_path).and_return('/bases')
+    allow(described_class).to receive(:resource_name).and_return('base')
   end
 
   it 'raises NoMethodError when attribute not available' do
@@ -18,53 +16,54 @@ RSpec.describe Billomat::Models::Base do
 
   describe '#initialize' do
     it 'creates a new base model' do
-      expect(base).to be_a(Billomat::Models::Base)
+      expect(base).to be_a(described_class)
     end
 
-    it 'allows to access the data easily' do
-      expect(base.id).to eq(123)
-      expect(base.foo).to eq('bar')
+    it 'allows to access the data easily (#id)' do
+      expect(base.id).to be_eql(123)
+    end
+
+    it 'allows to access the data easily (#foo)' do
+      expect(base.foo).to be_eql('bar')
     end
   end
 
   describe '.find' do
+    before do
+      allow(Billomat::Gateway).to receive(:new).and_return(base)
+      allow(base).to receive(:run).and_return('base' => { id: '123' })
+    end
+
     it 'calls the Gateway with objects id' do
-      allow(Billomat::Gateway)
-        .to receive_message_chain(:new, :run)
-        .and_return({ 'base' => { id: '123' } })
-
+      expect(Billomat::Gateway).to receive(:new).with(:get, '/bases/123')
       described_class.find(123)
-
-      expect(Billomat::Gateway).to have_received(:new).with(:get, '/bases/123')
     end
   end
 
   describe '.where' do
+    before do
+      allow(Billomat::Search).to receive(:new).and_return(base)
+      allow(base).to receive(:run)
+    end
+
     it 'calls the Search with the right params' do
-      allow(Billomat::Search)
-        .to receive_message_chain(:new, :run)
-
+      expect(Billomat::Search).to \
+        receive(:new).with(described_class, foo: 'bar')
       described_class.where(foo: 'bar')
-
-      expect(Billomat::Search)
-        .to have_received(:new).with(described_class, foo: 'bar')
     end
   end
 
   describe '#save' do
     before do
-      allow(Billomat::Gateway)
-        .to receive_message_chain(:new, :run)
-        .and_return({ id: 123, foo: 'bar' })
+      allow(Billomat::Gateway).to receive(:new).and_return(base)
+      allow(base).to receive(:run).and_return(id: 123, foo: 'bar')
     end
 
     context 'when object has an id' do
       it 'calls the gateway with PUT' do
+        expect(Billomat::Gateway).to \
+          receive(:new).with(:put, '/bases/123', Hash)
         base.save
-
-        expect(Billomat::Gateway)
-          .to have_received(:new)
-          .with(:put, '/bases/123', Hash)
       end
     end
 
@@ -74,27 +73,22 @@ RSpec.describe Billomat::Models::Base do
       end
 
       it 'calls the gateway with POST' do
+        expect(Billomat::Gateway).to \
+          receive(:new).with(:post, '/bases', Hash)
         base.save
-
-        expect(Billomat::Gateway)
-          .to have_received(:new)
-          .with(:post, '/bases', Hash)
       end
     end
   end
 
   describe '#delete' do
     before do
-      allow(Billomat::Gateway)
-        .to receive_message_chain(:new, :run)
+      allow(Billomat::Gateway).to receive(:new).and_return(base)
+      allow(base).to receive(:run)
     end
 
     it 'calls the gateway with DELETE' do
+      expect(Billomat::Gateway).to receive(:new).with(:delete, '/bases/123')
       base.delete
-
-      expect(Billomat::Gateway)
-        .to have_received(:new)
-        .with(:delete, '/bases/123')
     end
   end
 end

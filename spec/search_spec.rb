@@ -30,8 +30,8 @@ RSpec.describe Billomat::Search do
 
   let(:nothing) do
     {
-      "clients"=> {
-        "@page" => "1", "@per_page"=>"100", "@total"=>"0"
+      'clients' => {
+        '@page' => '1', '@per_page' => '100', '@total' => '0'
       }
     }
   end

@@ -2,17 +2,15 @@
 
 module Billomat
   module Actions
-    ##
     # This actions cancels an invoice
     class Cancel
-      # @param [String] invoice_id The invoice ID
+      # @param invoice_id [String] the invoice ID
       # @return [Billomat::Actions::Cancel]
       def initialize(invoice_id)
         @invoice_id = invoice_id
       end
 
-      ##
-      # Calls the gateway
+      # Calls the gateway.
       #
       # @return [TrueClass]
       def call
@@ -21,7 +19,7 @@ module Billomat
         true
       end
 
-      # @return [String] The cancel path with the invoice_id
+      # @return [String] the cancel path with the invoice_id
       def path
         "/invoices/#{@invoice_id}/cancel"
       end

@@ -10,7 +10,6 @@ require 'billomat/models/tag'
 require 'billomat/models/template'
 
 module Billomat
-  ##
-  # Models represent a resource in the API, e.g. invoices, clients
+  # Models represent a resource in the API, e.g. invoices, clients.
   module Models; end
 end
