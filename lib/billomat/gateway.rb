@@ -5,7 +5,38 @@ require 'json'
 
 module Billomat
   # Raised if something goes wrong during an API call.
-  class GatewayError < StandardError; end
+  class GatewayError < StandardError
+    attr_reader :original_exception
+
+    # Create a new GatewayError from a RestClient exception.
+    #
+    # @param original_exception [RestClient::Exception] the original exception
+    def initialize(original_exception)
+      super(original_exception.default_message)
+      @original_exception = original_exception
+    end
+
+    # Parses the response error from the original exception and extracts the
+    # detailed error, if present.
+    #
+    # @return [String, nil] the detailed error description or nil, if none is
+    #   present (e.g. if the error occurred before the request could start)
+    def response_error
+      body = original_exception.response&.body
+      JSON.parse(body)['errors']['error'] if body
+    end
+
+    # Returns the default message from the original exception and adds the
+    # extracted error from the response, if it exists.
+    #
+    # @return [String] the error description
+    def to_s
+      message = original_exception.default_message
+      message += " ('#{response_error}')" if response_error
+
+      message
+    end
+  end
 
   # This class can be used by the gem to communicate with the API.
   class Gateway
@@ -32,10 +63,11 @@ module Billomat
     def run
       resp = response
 
-      raise GatewayError, resp.body if resp.code > 299
       return nil if resp.body.empty?
 
       JSON.parse(resp.body)
+    rescue RestClient::Exception => e
+      raise GatewayError, e
     end
 
     # Executes the API call and return the response.
