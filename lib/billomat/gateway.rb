@@ -12,29 +12,17 @@ module Billomat
     #
     # @param original_exception [RestClient::Exception] the original exception
     def initialize(original_exception)
-      super(original_exception.default_message)
-      @original_exception = original_exception
-    end
-
-    # Parses the response error from the original exception and extracts the
-    # detailed error, if present.
-    #
-    # @return [String, nil] the detailed error description or nil, if none is
-    #   present (e.g. if the error occurred before the request could start)
-    def response_error
+      # Extract the error from the response if it is present. If no error
+      # could be extracted, use the whole body
       body = original_exception.response&.body
-      JSON.parse(body)['errors']['error'] if body
-    end
+      response_error = JSON.parse(body).dig('errors', 'error') || body if body
 
-    # Returns the default message from the original exception and adds the
-    # extracted error from the response, if it exists.
-    #
-    # @return [String] the error description
-    def to_s
+      # Use the default message and append our detailed error
       message = original_exception.default_message
       message += " ('#{response_error}')" if response_error
 
-      message
+      super(message)
+      @original_exception = original_exception
     end
   end
 
