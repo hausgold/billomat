@@ -46,6 +46,7 @@ module Billomat
 
         update
       end
+      alias_method :save!, :save
 
       # @return [TrueClass]
       def create
@@ -57,6 +58,7 @@ module Billomat
 
         true
       end
+      alias_method :create!, :create
 
       # @return [TrueClass]
       def update
@@ -66,6 +68,7 @@ module Billomat
 
         true
       end
+      alias_method :update!, :update
 
       # @return [TrueClass]
       def delete
@@ -74,6 +77,7 @@ module Billomat
 
         true
       end
+      alias_method :delete!, :delete
 
       # @return [String, nil] the object's ID
       def id
