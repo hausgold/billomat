@@ -1,3 +1,7 @@
+### 0.4.0
+
+* Added `InvoiceComment` models (#17)
+
 ### 0.3.0
 
 * Improve error handling (breaking change, as we are now raising
