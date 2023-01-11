@@ -89,7 +89,7 @@ module Billomat
         'X-BillomatApiKey' => config.api_key,
         'X-AppId' => config.app_id,
         'X-AppSecret' => config.app_secret
-      }.reject { |_, val| val.nil? }
+      }.compact
     end
 
     # @return [Billomat::Configuration] the global gem configuration

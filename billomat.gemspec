@@ -5,42 +5,46 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'billomat/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'billomat'
-  spec.version       = Billomat::VERSION
-  spec.licenses      = ['MIT']
-  spec.authors       = ['Henning Vogt']
-  spec.email         = ['henning.vogt@hausgold.de']
+  spec.name = 'billomat'
+  spec.version = Billomat::VERSION
+  spec.authors = ['Hermann Mayer', 'Henning Vogt']
+  spec.email = ['hermann.mayer92@gmail.com', 'henning.vogt@hausgold.de']
 
-  spec.summary       = 'Wrapper for the Billomat API'
-  spec.homepage      = 'https://github.com/hausgold/billomat'
+  spec.license = 'MIT'
+  spec.summary = 'Wrapper for the Billomat API'
+  spec.description = 'Wrapper for the Billomat API'
 
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the
-  # 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing
-  # to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = 'https://rubygems.org'
-  else
-    raise 'RubyGems 2.0 or newer is required to protect against ' \
-      'public gem pushes.'
-  end
+  base_uri = "https://github.com/hausgold/#{spec.name}"
+  spec.metadata = {
+    'homepage_uri' => base_uri,
+    'source_code_uri' => base_uri,
+    'changelog_uri' => "#{base_uri}/blob/master/CHANGELOG.md",
+    'bug_tracker_uri' => "#{base_uri}/issues",
+    'documentation_uri' => "https://www.rubydoc.info/gems/#{spec.name}"
+  }
 
   spec.files = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
   end
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+
+  spec.bindir = 'exe'
+  spec.executables = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'rest-client', '~> 2.0', '>= 2.0.2'
+  spec.required_ruby_version = '>= 2.5'
 
-  spec.add_development_dependency 'bundler', '>= 1.15', '< 3'
-  spec.add_development_dependency 'pry', '~> 0.11'
-  spec.add_development_dependency 'railties', '>= 4.2.0', '< 6.1'
-  spec.add_development_dependency 'rake', '~> 10.0'
-  spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_development_dependency 'rubocop', '~> 0.63.1'
-  spec.add_development_dependency 'rubocop-rspec', '~> 1.31'
-  spec.add_development_dependency 'simplecov', '< 0.18'
-  spec.add_development_dependency 'yard', '~> 0.9.18'
-  spec.add_development_dependency 'yard-activesupport-concern', '~> 0.0.1'
+  spec.add_dependency 'rest-client', '~> 2.1'
+
+  spec.add_development_dependency 'bundler', '~> 2.3'
+  spec.add_development_dependency 'countless', '~> 1.0'
+  spec.add_development_dependency 'guard-rspec', '~> 4.7'
+  spec.add_development_dependency 'irb', '~> 1.2'
+  spec.add_development_dependency 'rake', '~> 13.0'
+  spec.add_development_dependency 'rspec', '~> 3.12'
+  spec.add_development_dependency 'rubocop', '~> 1.28'
+  spec.add_development_dependency 'rubocop-rails', '~> 2.14'
+  spec.add_development_dependency 'rubocop-rspec', '~> 2.10'
+  spec.add_development_dependency 'simplecov', '>= 0.22'
+  spec.add_development_dependency 'yard', '>= 0.9.28'
+  spec.add_development_dependency 'yard-activesupport-concern', '>= 0.0.1'
 end

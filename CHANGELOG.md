@@ -1,3 +1,11 @@
+### next
+
+* Bundler >= 2.3 is from now on required as minimal version (#18)
+* Dropped support for Ruby < 2.5 (#18)
+* Dropped support for Rails < 5.2 (#18)
+* Updated all development/runtime gems to their latest
+  Ruby 2.5 compatible version (#18)
+
 ### 0.4.1
 
 * Added `InvoiceComment` models (#17)
