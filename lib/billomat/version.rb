@@ -3,7 +3,7 @@
 # The gem version details.
 module Billomat
   # The version of the +billomat+ gem
-  VERSION = '0.4.1'
+  VERSION = '1.0.0'
 
   class << self
     # Returns the version of gem as a string.
