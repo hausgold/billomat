@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'billomat/models/base'
+require 'billomat/models/article'
 require 'billomat/models/client'
 require 'billomat/models/credit_note'
 require 'billomat/models/credit_note_item'

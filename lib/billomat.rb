@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'billomat/version'
+require 'billomat/utils'
 require 'billomat/configuration'
 require 'billomat/models'
 require 'billomat/actions'
