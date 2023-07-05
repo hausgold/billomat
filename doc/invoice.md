@@ -2,19 +2,17 @@
 
 Documentation exists in English (1) and German (2). Both cover the basics of Invoicing, comments and payment. The German version also covers invoice positions and tags (Schlagwörter). If you can try to fallow the German documentation since it is more complete than the English version. The documentation shows the method (get, put, post, delete) and the path and query parameters beyond the base URL as well as some of the parameters the URL takes. All examples are in XML and often are escaped. To read the code you will need to unescape the examples.
 
-Under settings there are sections talking about the different types of properties (Attribute). There is no section invoice specific properties but the API for it exists.
-
-All examples here will be shown once in CURL and JSON and once using the Billomat Gem.
+All examples here will be shown once in CURL and JSON and once using the Billomat Gem. If you replace <your-billomat-api-key> and <your-billomat-subdomain> with the correct values you should be able to use the fallowing curl commands.
 
 ## List
 
-If you replace <your-billomat-api-key> and <your-billomat-subdomain> with the correct values you should be able to use the fallowing curl commands to get the paged invoices. The per_page value defaults to 100, the page value to 1.
+ The per_page value defaults to 100, the page value to 1.
 
 ``` BASH
 curl -H 'X-BillomatApiKey: <your-billomat-api-key>' -H 'Accept: application/json' https://<your-billomat-subdomain>.billomat.net/api/invoices\?per_page\=2\&page\=1
 ```
 
-The returned data is a nested object, invoices contains an array of all the returned invoice objects. If there is only one invoices is the one object. There is code in utils.rs to handle this case.
+The returned data is a nested object, invoices.invoice contains an array of all the returned invoice objects. If there is only one invoices.invoice is an object. There is code in utils.rs to handle this case.
 
 ``` JSON
 {
@@ -51,12 +49,6 @@ You can filter by attribute, in this case the customfield attribute.
 
 ``` BASH
 curl -H 'X-BillomatApiKey: <your-billomat-api-key>' -H 'Accept: application/json' https://<your-billomat-subdomain>.billomat.net/api/invoices/\?customfield\=649062cae817b347c8780fb5
-```
-
-Or you can filter by a user defined field by using "property\#\{client_property_id\}" as attribute.
-
-``` BASH
-curl -H 'X-BillomatApiKey: <your-billomat-api-key>' -H 'Accept: application/json' https://<your-billomat-subdomain>.billomat.net/api/invoices\?property5601\=whatever
 ```
 
 In ruby you can filter by calling the where method on the resource.
@@ -173,6 +165,21 @@ invoice.save
 
 The save method is a switch that calls the update method if an id is set and create if not.
 
+## Delete
+
+You can delete an invoice like this: 
+
+``` BASH
+curl -X DELETE -H 'X-BillomatApiKey: <your-billomat-api-key>' -H 'Accept: application/json' https://<your-billomat-subdomain>.billomat.net/api/invoices/15949653
+```
+
+Using the gem the same can be achieved by:
+
+``` RUBY
+invoice = Billomat::Models::Invoice.new('id' => 15949653)
+invoice.delete
+```
+
 ## Invoice Items
 
 ### List
@@ -268,21 +275,6 @@ invoice_item = Billomat::Models::InvoiceItem.new('id' => 40962565)
 invoice_item.delete
 ```
 
-## Delete
-
-You can delete an invoice like this: 
-
-``` BASH
-curl -X DELETE -H 'X-BillomatApiKey: <your-billomat-api-key>' -H 'Accept: application/json' https://<your-billomat-subdomain>.billomat.net/api/invoice-items/15949653
-```
-
-Using the gem the same can be achieved by:
-
-``` RUBY
-invoice = Billomat::Models::Invoice.new('id' => 15949653)
-invoice.delete
-```
-
 ## Finalize
 
 To finalize an invoice call the api endpoint like this:
@@ -359,6 +351,14 @@ invoice.save
 
 ## Tags (Schlagwörter)
 
+### List
+
+### Create
+
+### Update
+
+### Delete
+
 If you want to see a clients tags you can't do that by just fetching the client listing. You need to call a separate API for that. 
 
 ``` BASH
@@ -400,5 +400,5 @@ There is documentation in German on how to work with tags (4), there is none in 
 
 \[1\] [English Invoice Documentation](https://www.billomat.com/en/api/invoices/)  
 \[2\] [German Invoice Documentation](https://www.billomat.com/api/rechnungen/)  
-\[3\] [German Invoice Items Documentation](https://www.billomat.com/api/rechnungen/positionen/)
+\[3\] [German Invoice Items Documentation](https://www.billomat.com/api/rechnungen/positionen/)  
 \[4\] [German Invoice Tags Documentation](https://www.billomat.com/api/kunden/schlagworte/)
