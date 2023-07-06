@@ -336,7 +336,7 @@ If you have a Billomat::Models::Invoice instance you can also call the to_pdf me
 Invoices, like all resources in the API, have a field called customfield. It is a metadata field that can be set and searched for without having to use the property or tags API.
 
 ``` BASH
-curl -X PUT -H 'X-BillomatApiKey: <your-billomat-api-key>' -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"client": "649062cae817b347c8780fb5"}' https://<your-billomat-subdomain>.billomat.net/api/clients/7245252/customfield
+curl -X PUT -H 'X-BillomatApiKey: <your-billomat-api-key>' -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"invoice":{"customfield":"muster"}}' https://<your-billomat-subdomain>.billomat.net/api/invoices/15829804/customfield
 ```
 
 The same can be achieved in Ruby by:
@@ -358,41 +358,6 @@ invoice.save
 ### Update
 
 ### Delete
-
-If you want to see a clients tags you can't do that by just fetching the client listing. You need to call a separate API for that. 
-
-``` BASH
-curl -H 'X-BillomatApiKey: <your-billomat-api-key>' -H 'Accept: application/json' https://<your-billomat-subdomain>.billomat.net/api/client-tags\?client_id\=7245252
-```
-
-The return data looks like this:
-
-``` JSON
-{
-  "client-tags": {
-    "client-tag": [
-      {
-        "id": "682305",
-        "name": "import",
-        "client_id": "7245252",
-        "customfield": ""
-      },
-      {
-        "id": "682311",
-        "name": "649062cae817b347c8780fb5",
-        "client_id": "7245252",
-        "customfield": ""
-      }
-    ],
-    "@page": "1",
-    "@per_page": "100",
-    "@total": "2"
-  }
-}
-```
-
-I don't think there currently is a way to do this with the Billomat gem yet.  
-There is documentation in German on how to work with tags (4), there is none in English.
 
 ---
 

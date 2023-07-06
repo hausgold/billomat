@@ -3,6 +3,7 @@
 require 'billomat/models/base'
 require 'billomat/models/article'
 require 'billomat/models/client'
+require 'billomat/models/client_property'
 require 'billomat/models/credit_note'
 require 'billomat/models/credit_note_item'
 require 'billomat/models/invoice'
