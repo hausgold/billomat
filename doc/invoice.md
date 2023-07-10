@@ -1,12 +1,12 @@
 # Invoice
 
-Documentation exists in English (1) and German (2). Both cover the basics of Invoicing, comments and payment. The German version also covers invoice positions and tags (Schlagwörter). If you can try to fallow the German documentation since it is more complete than the English version. The documentation shows the method (get, put, post, delete) and the path and query parameters beyond the base URL as well as some of the parameters the URL takes. All examples are in XML and often are escaped. To read the code you will need to unescape the examples.
+Documentation exists in English (1) and German (2). Both cover the basics of Invoicing, comments and payment. The German version also covers invoice positions and tags (Schlagwörter). If you can try to follow the German documentation since it is more complete than the English version. The documentation shows the method (get, put, post, delete) and the path and query parameters beyond the base URL as well as some of the parameters the URL takes. All examples are in XML and often are escaped. To read the code you will need to unescape the examples.
 
-All examples here will be shown once in CURL and JSON and once using the Billomat Gem. If you replace <your-billomat-api-key> and <your-billomat-subdomain> with the correct values you should be able to use the fallowing curl commands.
+All examples here will be shown once in CURL and JSON and once using the Billomat Gem. If you replace <your-billomat-api-key> and <your-billomat-subdomain> with the correct values you should be able to use the following curl commands.
 
 ## List
 
- The per_page value defaults to 100, the page value to 1.
+The per_page value defaults to 100, the page value to 1.
 
 ``` BASH
 curl -H 'X-BillomatApiKey: <your-billomat-api-key>' -H 'Accept: application/json' https://<your-billomat-subdomain>.billomat.net/api/invoices\?per_page\=2\&page\=1
@@ -25,7 +25,7 @@ The returned data is a nested object, invoices.invoice contains an array of all 
 }
 ```
 
-In ruby you have two ways to get at the list data. The first is to call the list function (page and per_page optional) and the second ist to call paged_list (again with page and per_page optional). Each give back slightly different data.
+In ruby you have two ways to get at the list data. The first is to call the list function (page and per_page optional) and the second is to call paged_list (again with page and per_page optional). Each give back slightly different data.
 
 ``` RUBY
 invoices = Billomat::Models::Invoice.list
@@ -41,7 +41,7 @@ invoices = Billomat::Models::Invoice.paged_list(page = 2, per_page = 10)
 pp invoices
 ```
 
-paged_list returns a hash whith two properties, data wich contains the same data as list does and paging_data, a hash that has page, per_page and total as properties.
+paged_list returns a hash with two properties, data which contains the same data as list does and paging_data, a hash that has page, per_page and total as properties.
 
 ## Filter
 
@@ -60,7 +60,7 @@ invoices = Billomat::Models::Invoice.where({"customfield": "test data"})
 ## Create
 
 There are multiple ways of working with invoices items. The easiest way to deal with them is to just nest them during invoice creation. If you need to manipulate the invoice items afterwards there is a separate invoice items api that can be used for that (3).  
-Lets create an invoice by sending the fallowing JSON to the API.
+Lets create an invoice by sending the following JSON to the API.
 
 ``` JSON
 {
@@ -333,7 +333,7 @@ If you have a Billomat::Models::Invoice instance you can also call the to_pdf me
 
 ## Metafield
 
-Invoices, like all resources in the API, have a field called customfield. It is a metadata field that can be set and searched for without having to use the property or tags API.
+Invoices, like all resources in the API, have a field called customfield. It is a metadata field that can be set and filtered for without having to use the property or tags API.
 
 ``` BASH
 curl -X PUT -H 'X-BillomatApiKey: <your-billomat-api-key>' -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"invoice":{"customfield":"muster"}}' https://<your-billomat-subdomain>.billomat.net/api/invoices/15829804/customfield
@@ -349,16 +349,6 @@ invoice = Billomat::Models::Invoice.new({
 invoice.save
 ```
 
-## Tags (Schlagwörter)
-
-### List
-
-### Create
-
-### Update
-
-### Delete
-
 ---
 
 #### Links
@@ -366,4 +356,3 @@ invoice.save
 \[1\] [English Invoice Documentation](https://www.billomat.com/en/api/invoices/)  
 \[2\] [German Invoice Documentation](https://www.billomat.com/api/rechnungen/)  
 \[3\] [German Invoice Items Documentation](https://www.billomat.com/api/rechnungen/positionen/)  
-\[4\] [German Invoice Tags Documentation](https://www.billomat.com/api/kunden/schlagworte/)

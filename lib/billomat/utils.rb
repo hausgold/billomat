@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'pp'
+
 module Billomat
   # This class provides the possibility utility functions for data formatting
   class Utils

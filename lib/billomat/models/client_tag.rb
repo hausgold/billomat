@@ -2,16 +2,16 @@
 
 module Billomat
   module Models
-    # Representation of the client-property resource.
-    class ClientProperty < Base
+    # Representation of the client-tag resource.
+    class ClientTag < Base
       # @return [String] the resource's base path
       def self.base_path
-        '/client-property-values'
+        '/client-tags'
       end
 
       # @return [String] the resource's name
       def self.resource_name
-        'client-property-value'
+        'client-tag'
       end
     end
   end

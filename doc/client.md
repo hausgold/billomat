@@ -1,8 +1,8 @@
 # Client/Customer
 
-Documentation exists in English (1) and German (2). Both cover the client as well as contacts. The German version also covers user defined fields (Attribute) and tags (Schlagwörter). If you can try to fallow the German documentation since it is more complete than the English version. The documentation shows the method (get, put, post, delete) and the path and query parameters beyond the base URL as well as some of the parameters the URL takes. All examples are in XML and often are escaped. To read the code you will need to unescape the examples.
+Documentation exists in English (1) and German (2). Both cover the client as well as contacts. The German version also covers user defined fields (Attribute) and tags (Schlagwörter). If you can try to follow the German documentation since it is more complete than the English version. The documentation shows the method (get, put, post, delete) and the path and query parameters beyond the base URL as well as some of the parameters the URL takes. All examples are in XML and often are escaped. To read the code you will need to unescape the examples.
 
-All examples here will be shown once in CURL and JSON and once using the Billomat Gem. If you replace <your-billomat-api-key> and <your-billomat-subdomain> with the correct values you should be able to use the fallowing curl commands.
+All examples here will be shown once in CURL and JSON and once using the Billomat Gem. If you replace <your-billomat-api-key> and <your-billomat-subdomain> with the correct values you should be able to use the following curl commands.
 
 ## List
 
@@ -25,7 +25,7 @@ The returned data is a nested object, clients.client contains an array of all th
 }
 ```
 
-In ruby you have two ways to get at the list data. The first is to call the list function (page and per_page optional) and the second ist to call paged_list (again with page and per_page optional). Each give back slightly different data.
+In ruby you have two ways to get at the list data. The first is to call the list function (page and per_page optional) and the second is to call paged_list (again with page and per_page optional). Each give back slightly different data.
 
 ``` RUBY
 clients = Billomat::Models::Client.list
@@ -41,7 +41,7 @@ clients = Billomat::Models::Client.paged_list(page = 2, per_page = 10)
 pp clients
 ```
 
-paged_list returns a hash whith two properties, data wich contains the same data as list does and paging_data, a hash that has page, per_page and total as properties.
+paged_list returns a hash with two properties, data which contains the same data as list does and paging_data, a hash that has page, per_page and total as properties.
 
 ## Filter
 
@@ -65,7 +65,7 @@ clients = Billomat::Models::Client.where({"client_number": "KD2"})
 
 ## Create
 
-Lets create an client by sending the fallowing JSON to the API.
+Lets create a client by sending the following JSON to the API.
 
 ``` JSON
 {
@@ -169,7 +169,7 @@ The returned data is a nested object, contacts.contact contains an array of all 
 }
 ```
 
-In ruby you have two ways to get at the list data. The first is to call the list function (page and per_page optional) and the second ist to call paged_list (again with page and per_page optional). Each give back slightly different data.
+In ruby you have two ways to get at the list data. The first is to call the list function (page and per_page optional) and the second is to call paged_list (again with page and per_page optional). Each give back slightly different data.
 
 ``` RUBY
 contacts = Billomat::Models::Contact.list
@@ -185,7 +185,7 @@ contacts = Billomat::Models::Contact.paged_list(page = 2, per_page = 10)
 pp contacts
 ```
 
-paged_list returns a hash whith two properties, data wich contains the same data as list does and paging_data, a hash that has page, per_page and total as properties.
+paged_list returns a hash with two properties, data which contains the same data as list does and paging_data, a hash that has page, per_page and total as properties.
 
 ## Filter
 
@@ -203,7 +203,7 @@ contacts = Billomat::Models::Contact.where({"last_name": "Mustaman"})
 
 ### Create
 
-Lets create an client contact by sending the fallowing JSON to the API.
+Lets create a client contact by sending the following JSON to the API.
 
 ``` JSON
 {
@@ -284,7 +284,7 @@ contact.delete
 
 ## User defined fields
 
-Additional fields can be defined for Clients/Customers as well as a few other resources. Documentation for user defined fields in German (5).
+Additional fields can be defined for clients/customers as well as a few other resources.
 
 ### List
 
@@ -307,25 +307,25 @@ The returned data is a nested object, client-property-values.client-property-val
 }
 ```
 
-In ruby you have two ways to get at the list data. The first is to call the list function (page and per_page optional) and the second ist to call paged_list (again with page and per_page optional). Each give back slightly different data.
+In ruby you have two ways to get at the list data. The first is to call the list function (page and per_page optional) and the second is to call paged_list (again with page and per_page optional). Each give back slightly different data.
 
 ``` RUBY
-client_properties = Billomat::Models::ClientProperty.list
+client_properties = Billomat::Models::ClientPropertyValue.list
 client_properties.each do |property|
   pp property.data
 end
 ```
 
-list returns a list of Billomat::Models::ClientProperty. To get at the date call the data property.
+list returns a list of Billomat::Models::ClientPropertyValue. To get at the date call the data property.
 
 ``` RUBY
-client_properties = Billomat::Models::ClientProperty.paged_list(page = 2, per_page = 10)
+client_properties = Billomat::Models::ClientPropertyValue.paged_list(page = 2, per_page = 10)
 pp client_properties
 ```
 
-paged_list returns a hash whith two properties, data wich contains the same data as list does and paging_data, a hash that has page, per_page and total as properties.
+paged_list returns a hash with two properties, data which contains the same data as list does and paging_data, a hash that has page, per_page and total as properties.
 
-## Filter
+### Filter
 
 You can filter by attribute, in this case the client_id attribute.
 
@@ -336,14 +336,14 @@ curl -H 'X-BillomatApiKey: <your-billomat-api-key>' -H 'Accept: application/json
 The same can be achieve in ruby by:
 
 ``` RUBY
-clients = Billomat::Models::ClientProperty.where({"client_number": "KD2"})
+clients = Billomat::Models::ClientPropertyValue.where({"client_number": "KD2"})
 ```
 
 You can also filter on the client using client-property-values like described in the appropriate section above.
 
 ### Create
 
-Lets create an client property by sending the fallowing JSON to the API.
+Lets create a client property by sending the following JSON to the API.
 
 ``` JSON
 {
@@ -364,7 +364,7 @@ curl -X POST -H 'X-BillomatApiKey: <your-billomat-api-key>' -H 'Content-Type: ap
 The return data is the resulting client-property-value. The same can be achieved over in ruby like this:
 
 ``` RUBY
-client_property = Billomat::Models::ClientProperty.new({
+client_property = Billomat::Models::ClientPropertyValue.new({
   "client_id" => "7235858",
   "client_property_id" => "18291",
   "value" => "ext-1007"
@@ -372,7 +372,7 @@ client_property = Billomat::Models::ClientProperty.new({
 client_property.save
 ```
 
-The return data will be pushed to clientProperty.data.
+The return data will be pushed to client_property.data.
 
 ### Update
 
@@ -395,7 +395,7 @@ curl -X PUT -H 'X-BillomatApiKey: <your-billomat-api-key>' -H 'Accept: applicati
 The same can be done in ruby by instantiating a client property with ID and saving.
 
 ``` RUBY
-client = Billomat::Models::ClientProperty.new('id' => 9672334, 'value' => 'ext-12345')
+client = Billomat::Models::ClientPropertyValue.new('id' => 9672334, 'value' => 'ext-12345')
 client.save
 ```
 
@@ -412,16 +412,16 @@ curl -X DELETE -H 'X-BillomatApiKey: <your-billomat-api-key>' -H 'Accept: applic
 Using the gem the same can be achieved by:
 
 ``` RUBY
-client = Billomat::Models::ClientProperty.new('id' => 9672334)
+client = Billomat::Models::ClientPropertyValue.new('id' => 9672334)
 client.delete
 ```
 
 ## Metafield
 
-Clients, like all resources in the API, have a field called customfield. It is a metadata field that can be set and searched for without having to use the property or tags API.
+Clients, like all resources in the API, have a field called customfield. It is a metadata field that can be set and filtered for without having to use the property or tags API.
 
 ``` BASH
-curl -X PUT -H 'X-BillomatApiKey: <your-billomat-api-key>' -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"invoice":{"customfield":"muster"}}' https://<your-billomat-subdomain>.billomat.net/api/clients/7245252/customfield
+curl -X PUT -H 'X-BillomatApiKey: <your-billomat-api-key>' -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"client":{"customfield":"muster"}}' https://<your-billomat-subdomain>.billomat.net/api/clients/7245252/customfield
 ```
 
 The same can be achieved in Ruby by:
@@ -436,13 +436,105 @@ client.save
 
 ## Tags (Schlagwörter)
 
+Documentation for client tags exists in German (6).
+
 ### List
+
+The per_page value defaults to 100, the page value to 1.
+
+``` BASH
+curl -H 'X-BillomatApiKey: <your-billomat-api-key>' -H 'Accept: application/json' https://<your-billomat-subdomain>.billomat.net/api/client-tags\?per_page\=5\&page\=1
+```
+
+The returned data is a nested object, client-tags.client-tag contains an array of all the returned client-tag objects. If there is only one client-tags.client-tag is an object. There is code in utils.rs to handle this case.
+
+``` JSON
+{
+  "client-tags": {
+    "client-tag": [],
+    "@page": "1",
+    "@per_page": "2",
+    "@total": "12"
+  }
+}
+```
+
+In ruby you have two ways to get at the list data. The first is to call the list function (page and per_page optional) and the second is to call paged_list (again with page and per_page optional). Each give back slightly different data.
+
+``` RUBY
+client_tags = Billomat::Models::ClientTag.list
+client_tags.each do |tag|
+  pp tag.data
+end
+```
+
+list returns a list of Billomat::Models::ClientTag. To get at the date call the data property.
+
+``` RUBY
+client_tags = Billomat::Models::ClientTag.paged_list(page = 2, per_page = 10)
+pp client_tags
+```
+
+paged_list returns a hash whith two properties, data which contains the same data as list does and paging_data, a hash that has page, per_page and total as properties.
+
+If you want to list the client tags of a client you can do so by calling:
+
+``` BASH
+curl -H 'X-BillomatApiKey: <your-billomat-api-key>' -H 'Accept: application/json' https://<your-billomat-subdomain>.billomat.net/api/client-tags\?client_id\=7299528
+```
+
+The same can be achieved over in ruby like this:
+
+``` RUBY
+client_tag = Billomat::Models::ClientTag.where('client_id' => 7299528)
+pp client_tag
+```
 
 ### Create
 
-### Update
+Lets add a client tag by sending the following JSON to the API.
+
+``` JSON
+{
+  "client-tag": {
+    "client_id": "7299528",
+    "name": "test"
+  }
+}
+```
+
+We do that by posting the data like this:
+
+``` BASH
+curl -X POST -H 'X-BillomatApiKey: <your-billomat-api-key>' -H 'Content-Type: application/json' -H 'Accept: application/json' -d '{"client-tag":{"client_id":"7299528","name":"test"}}' https://<your-billomat-subdomain>.billomat.net/api/client-tags
+```
+
+The return data is the resulting client-tag. The same can be achieved over in ruby like this:
+
+``` RUBY
+client_tag = Billomat::Models::ClientTag.new({
+  "client_id" => "7299528",
+  "name" => "api-posted"
+})
+client_tag.save
+```
+
+The return data will be pushed to client_tag.data.
 
 ### Delete
+
+You can delete a client tag like this: 
+
+``` BASH
+curl -X DELETE -H 'X-BillomatApiKey: <your-billomat-api-key>' -H 'Accept: application/json' https://<your-billomat-subdomain>.billomat.net/api/client-tags/689757
+```
+
+Using the gem the same can be achieved by:
+
+``` RUBY
+client_tag = Billomat::Models::ClientTag.new('id' => 689750)
+client_tag.delete
+```
 
 ---
 
@@ -453,3 +545,4 @@ client.save
 \[3\] [English Contact Documentation](https://www.billomat.com/en/api/clients/contacts/)  
 \[4\] [German Contact Documentation](https://www.billomat.com/api/kunden/kontakte/)  
 \[5\] [German Client Attribute Documentation](https://www.billomat.com/api/kunden/attribute/)  
+\[6\] [German Client Tags Documentation](https://www.billomat.com/api/kunden/schlagworte/)  
