@@ -38,10 +38,8 @@ module Billomat
         path = "#{base_path}?#{paging_info}"
         resp = Billomat::Gateway.new(:get, path).run
         paging_data = Billomat::Utils.get_paging_data(resp, resource_name)
-
-        # TODO: need a bounds check here
-
-        data = Billomat::Utils.to_array(resp, resource_name, self)
+        oob = Billomat::Utils.out_of_bounds(paging_data)
+        data = oob ? [] : Billomat::Utils.to_array(resp, resource_name, self)
 
         { 'paging_data' => paging_data, 'data' => data }
       end

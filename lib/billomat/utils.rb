@@ -48,5 +48,17 @@ module Billomat
         'total' => total
       }
     end
+
+    # @param [Hash] paging_data The response from get_paging_data
+    def self.out_of_bounds(paging_data)
+      if paging_data['total'].zero?
+        true
+      elsif paging_data['page'] == 1
+        false
+      else
+        shown = (paging_data['page'] - 1) * paging_data['per_page']
+        shown > paging_data['total']
+      end
+    end
   end
 end
