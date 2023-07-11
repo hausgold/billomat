@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'pp'
-
 module Billomat
   module Actions
     # This class allows to download the invoice as a pdf.
