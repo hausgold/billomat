@@ -15,6 +15,7 @@ require 'billomat/models/invoice_item'
 require 'billomat/models/invoice_payment'
 require 'billomat/models/contact'
 require 'billomat/models/tag'
+require 'billomat/models/tax'
 require 'billomat/models/template'
 
 module Billomat
