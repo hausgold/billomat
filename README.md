@@ -60,6 +60,11 @@ Billomat.configure do |config|
   # https://www.billomat.com/en/api/basics/rate-limiting/
   config.app_id = '12345'
   config.app_secret = 'c3df...'
+
+  config.after_response = lambda do |response|
+    # API response callback, e.g. for inspecting the rate limit
+    # header via response.headers[:x_rate_limit_remaining]
+  end
 end
 ```
 

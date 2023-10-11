@@ -1,6 +1,7 @@
 ### next
 
 * Moved the development dependencies from the gemspec to the Gemfile (#19)
+* Introduce `after_response` callback (#22)
 
 ### 1.1.0
 

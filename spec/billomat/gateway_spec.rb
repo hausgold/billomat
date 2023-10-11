@@ -32,6 +32,8 @@ RSpec.describe Billomat::Gateway do
   end
 
   describe '#run' do
+    let(:callback) { instance_double(Proc) }
+
     context 'when API Call is successful' do
       let(:execute_args) do
         {
@@ -50,6 +52,13 @@ RSpec.describe Billomat::Gateway do
         expect(RestClient::Request).to \
           receive(:execute).with(hash_including(**execute_args))
 
+        gateway.new(:get, '/clients', foo: 'bar').run
+      end
+
+      it 'invokes after_response callback with response' do
+        expect(callback).to receive(:call).with(good_response)
+
+        Billomat.configuration.after_response = callback
         gateway.new(:get, '/clients', foo: 'bar').run
       end
     end

@@ -68,7 +68,7 @@ module Billomat
         timeout: timeout,
         headers: headers,
         payload: body.to_json
-      )
+      ).tap { |response| Billomat.configuration.after_response&.call(response) }
     end
 
     # @return [String] the complete URL for the request
