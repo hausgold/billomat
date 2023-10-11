@@ -48,7 +48,7 @@ RSpec.describe Billomat::Models::Base do
 
     it 'calls the Search with the right params' do
       expect(Billomat::Search).to \
-        receive(:new).with(described_class, foo: 'bar')
+        receive(:new).with(described_class, { foo: 'bar' })
       described_class.where(foo: 'bar')
     end
   end
