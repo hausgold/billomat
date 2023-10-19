@@ -5,6 +5,7 @@ require 'billomat/actions/email'
 require 'billomat/actions/pdf'
 require 'billomat/actions/cancel'
 require 'billomat/actions/uncancel'
+require 'billomat/actions/correct'
 
 module Billomat
   # Actions are API calls that do not directly represent a resource.
