@@ -6,8 +6,8 @@ RSpec.describe Billomat::Models::Base do
   let(:base) { described_class.new(id: 123, foo: 'bar') }
 
   before do
-    allow(described_class).to receive(:base_path).and_return('/bases')
-    allow(described_class).to receive(:resource_name).and_return('base')
+    allow(described_class).to \
+      receive_messages(base_path: '/bases', resource_name: 'base')
   end
 
   it 'raises NoMethodError when attribute not available' do
@@ -48,7 +48,7 @@ RSpec.describe Billomat::Models::Base do
 
     it 'calls the Search with the right params' do
       expect(Billomat::Search).to \
-        receive(:new).with(described_class, foo: 'bar')
+        receive(:new).with(described_class, { foo: 'bar' })
       described_class.where(foo: 'bar')
     end
   end

@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe Billomat::Models::InvoiceItem do
+RSpec.describe Billomat::Models::InvoicePayment do
   it 'has a base path' do
     expect(described_class.base_path).to be_a(String)
   end
