@@ -43,7 +43,7 @@ module Billomat
 
     # @param [Hash] resp The response from the gateway
     # @param [String] name The name of the resource
-    # @return [Hash] The paging info (page, per_page and total)
+    # @return [Hash{String => Mixed}] The paging info (page, per_page and total)
     def self.get_paging_data(resp, name)
       sufix = Billomat::Utils.get_sufix(name)
       page = resp["#{name}#{sufix}"]['@page'].to_i
