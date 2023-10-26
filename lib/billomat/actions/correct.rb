@@ -4,7 +4,7 @@ module Billomat
   module Actions
     # This actions correct an invoice
     class Correct
-      # Returns a 16739030 object.
+      # Returns a Correct object.
       #
       # @param invoice_id [String] the ID of the invoice
       # @param opts [Hash] the options for this request
