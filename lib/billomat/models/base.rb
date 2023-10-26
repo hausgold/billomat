@@ -30,7 +30,7 @@ module Billomat
 
       # @param [Integer] page The page of data
       # @param [Integer] per_page The amount of items per page
-      # @return [Hash] the paging_data (Hash with page, per_page and total) \
+      # @return [Hash{String => Mixed}] the paging_data (Hash with page, per_page and total) \
       #                and the data (Array<Billomat::Models::Base>)
       def self.paged_list(page = 1, per_page = 100)
         info = { 'page' => page, 'per_page' => per_page }
