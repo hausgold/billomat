@@ -41,7 +41,7 @@ module Billomat
         oob = Billomat::Utils.out_of_bounds(paging_data)
         data = oob ? [] : Billomat::Utils.to_array(resp, resource_name, self)
 
-        { 'paging_data' => paging_data, 'data' => data }
+        OpenStruct.new(paging_data.merge(data: data)
       end
 
       # @param [Integer] page The page of data
