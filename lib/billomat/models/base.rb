@@ -48,7 +48,7 @@ module Billomat
       # @param [Integer] per_page The amount of items per page
       # @return [Array<Billomat::Models::Base>] the found records
       def self.list(page = 1, per_page = 100)
-        paged_list(page, per_page)['data']
+        paged_list(page, per_page).data
       end
 
       # Initializes a new model.
