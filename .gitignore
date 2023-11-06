@@ -16,3 +16,6 @@ billomat*.gem
 
 # rspec failure tracking
 .rspec_status
+
+# Mac
+.DS_Store

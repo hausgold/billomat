@@ -28,6 +28,29 @@ module Billomat
         Billomat::Search.new(self, hash).run
       end
 
+      # @param [Integer] page The page of data
+      # @param [Integer] per_page The amount of items per page
+      # @return [Hash{String => Mixed}] the paging_data (Hash with page, per_page and total) \
+      #                and the data (Array<Billomat::Models::Base>)
+      def self.paged_list(page = 1, per_page = 100)
+        info = { 'page' => page, 'per_page' => per_page }
+        paging_info = URI.encode_www_form(info)
+        path = "#{base_path}?#{paging_info}"
+        resp = Billomat::Gateway.new(:get, path).run
+        paging_data = Billomat::Utils.get_paging_data(resp, resource_name)
+        oob = Billomat::Utils.out_of_bounds(paging_data)
+        data = oob ? [] : Billomat::Utils.to_array(resp, resource_name, self)
+
+        OpenStruct.new(paging_data.merge(data: data))
+      end
+
+      # @param [Integer] page The page of data
+      # @param [Integer] per_page The amount of items per page
+      # @return [Array<Billomat::Models::Base>] the found records
+      def self.list(page = 1, per_page = 100)
+        paged_list(page, per_page).data
+      end
+
       # Initializes a new model.
       #
       # @param data [Hash] the attributes of the object

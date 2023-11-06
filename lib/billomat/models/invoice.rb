@@ -15,6 +15,12 @@ module Billomat
       end
 
       # Completes the invoice by calling the Complete action.
+      def correct!
+        resp = Billomat::Actions::Correct.new(@data.invoice_id, @data.to_h).call
+        @data = OpenStruct.new(resp[self.class.resource_name])
+      end
+
+      # Completes the invoice by calling the Complete action.
       def complete!
         Billomat::Actions::Complete.new(id).call
       end
