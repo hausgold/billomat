@@ -31,22 +31,20 @@ module Billomat
 
     # Corrects the response to always return an array.
     #
-    # @todo Due to a strange API behaviour we have to fix the reponse here.
+    # @todo Due to a strange API behaviour we have to fix the response here.
     #   This may be fixed in a new API version.
     #
     # @param [Hash] resp The response from the gateway
     # @return [Array<Billomat::Model::Base>]
     def to_array(resp)
-      case count(resp)
-      when 0
-        []
-      when 1
-        # Necessary due to strange API behaviour
-        [@resource.new(resp["#{name}s"][name])]
+      data = resp["#{name}s"][name]
+      case data
+      when Hash
+        [@resource.new(data)]
+      when Array
+        data.map { |d| @resource.new(d) }
       else
-        resp["#{name}s"][name].map do |c|
-          @resource.new(c)
-        end
+        []
       end
     end
 

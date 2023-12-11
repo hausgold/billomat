@@ -23,7 +23,7 @@ RSpec.describe Billomat::Search do
     {
       'clients' => {
         'client' => { id: 1 },
-        '@total' => '1'
+        '@total' => '3'
       }
     }
   end
@@ -31,7 +31,7 @@ RSpec.describe Billomat::Search do
   let(:nothing) do
     {
       'clients' => {
-        '@page' => '1', '@per_page' => '100', '@total' => '0'
+        '@page' => '2', '@per_page' => '100', '@total' => '3'
       }
     }
   end
