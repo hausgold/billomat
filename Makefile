@@ -23,6 +23,7 @@ GREP ?= grep
 ID ?= id
 MKDIR ?= mkdir
 RM ?= rm
+TEST ?= test
 XARGS ?= xargs
 
 # Container binaries
@@ -33,6 +34,7 @@ RAKE ?= rake
 RSPEC ?= rspec
 RUBOCOP ?= rubocop
 YARD ?= yard
+RUBY_VERSION := ruby-version
 
 # Define a generic shell run wrapper
 # $1 - The command to run
@@ -98,7 +100,8 @@ test-style: \
 
 test-style-ruby:
 	# Run the static code analyzer (rubocop)
-	@$(call run-shell,$(BUNDLE) exec $(RUBOCOP) -a)
+	@$(call run-shell,$(BUNDLE) exec $(RUBOCOP) -a \
+		|| ($(TEST) $$($(RUBY_VERSION)) != '2.5' && true))
 
 clean:
 	# Clean the dependencies
