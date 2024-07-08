@@ -1,5 +1,9 @@
 ### next
 
+* TODO: Replace this bullet point with an actual description of a change.
+
+### 1.2.0
+
 * Moved the development dependencies from the gemspec to the Gemfile (#19)
 * Introduce `after_response` callback (#22)
 * Fix response parsing for responses exceeding the page size (#23)
