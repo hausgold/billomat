@@ -26,7 +26,7 @@ RSpec.describe Billomat::Gateway do
 
     context 'without a body' do
       it 'only returns the original error message' do
-        expect(error.to_s).to be_eql('RestClient::Exception')
+        expect(error.to_s).to eql('RestClient::Exception')
       end
     end
   end

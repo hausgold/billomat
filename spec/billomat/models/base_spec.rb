@@ -20,11 +20,11 @@ RSpec.describe Billomat::Models::Base do
     end
 
     it 'allows to access the data easily (#id)' do
-      expect(base.id).to be_eql(123)
+      expect(base.id).to be(123)
     end
 
     it 'allows to access the data easily (#foo)' do
-      expect(base.foo).to be_eql('bar')
+      expect(base.foo).to eql('bar')
     end
   end
 
