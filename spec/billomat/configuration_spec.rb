@@ -13,7 +13,8 @@ RSpec.describe Billomat::Configuration do
     end
 
     it 'raises an error when assigned a non proc' do
-      expect { configuration.after_response = :foo }.to raise_error(ArgumentError)
+      expect { configuration.after_response = :foo }.to \
+        raise_error(ArgumentError)
     end
   end
 end

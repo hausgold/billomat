@@ -3,6 +3,7 @@
 * Moved the development dependencies from the gemspec to the Gemfile (#19)
 * Introduce `after_response` callback (#22)
 * Fix response parsing for responses exceeding the page size (#23)
+* Dropped support for Ruby <2.7 (#24)
 
 ### 1.1.0
 

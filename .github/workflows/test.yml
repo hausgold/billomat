@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby: ['2.5', '2.7']
+        ruby: ['2.7']
     steps:
       - uses: actions/checkout@v4
 
@@ -27,7 +27,7 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
-          rubygems: '3.3.26'
+          rubygems: '3.4.22'
 
       - name: Prepare the virtual environment
         uses: hausgold/actions/ci@master
