@@ -18,6 +18,7 @@ VENDOR_DIR ?= vendor/bundle
 AWK ?= awk
 BASH ?= bash
 COMPOSE ?= docker-compose
+CP ?= cp
 DOCKER ?= docker
 GREP ?= grep
 ID ?= id
