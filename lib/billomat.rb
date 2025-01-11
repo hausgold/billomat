@@ -9,9 +9,6 @@ require 'uri'
 
 # An wrapper for the Billomat API.
 module Billomat
-  # Configure the relative gem code base location
-  root_path = Pathname.new("#{__dir__}/billomat")
-
   # Setup a Zeitwerk autoloader instance and configure it
   loader = Zeitwerk::Loader.for_gem
 
