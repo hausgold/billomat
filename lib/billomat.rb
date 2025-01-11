@@ -1,14 +1,26 @@
 # frozen_string_literal: true
 
-require 'billomat/version'
-require 'billomat/configuration'
-require 'billomat/models'
-require 'billomat/actions'
-require 'billomat/search'
-require 'billomat/gateway'
+require 'zeitwerk'
+require 'active_support'
+require 'rest-client'
+require 'json'
+require 'ostruct'
+require 'uri'
 
 # An wrapper for the Billomat API.
 module Billomat
+  # Configure the relative gem code base location
+  root_path = Pathname.new("#{__dir__}/billomat")
+
+  # Setup a Zeitwerk autoloader instance and configure it
+  loader = Zeitwerk::Loader.for_gem
+
+  # Finish the auto loader configuration
+  loader.setup
+
+  # Make sure to eager load all SDK constants
+  loader.eager_load
+
   class << self
     attr_writer :configuration
 

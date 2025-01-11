@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'uri'
-
 module Billomat
   # This class provides the possibility to query the resources.
   class Search

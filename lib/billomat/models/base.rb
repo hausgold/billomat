@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'ostruct'
-
 module Billomat
   module Models
     # This class is the base for all other models (resources).

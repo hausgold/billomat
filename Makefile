@@ -13,6 +13,7 @@ BASH_RUN_SHELL_FLAGS ?=
 
 # Directories
 VENDOR_DIR ?= vendor/bundle
+GEMFILES_DIR ?= gemfiles
 
 # Host binaries
 AWK ?= awk
@@ -20,14 +21,19 @@ BASH ?= bash
 COMPOSE ?= docker-compose
 CP ?= cp
 DOCKER ?= docker
+EXPORT ?= export
+FIND ?= find
 GREP ?= grep
+HEAD ?= head
 ID ?= id
 MKDIR ?= mkdir
 RM ?= rm
+SORT ?= sort
 TEST ?= test
 XARGS ?= xargs
 
 # Container binaries
+APPRAISAL ?= appraisal
 BUNDLE ?= bundle
 GEM ?= gem
 GUARD ?= guard
@@ -36,6 +42,12 @@ RSPEC ?= rspec
 RUBOCOP ?= rubocop
 YARD ?= yard
 RUBY_VERSION := ruby-version
+
+# Files
+GEMFILES ?= $(subst _,-,$(patsubst $(GEMFILES_DIR)/%.gemfile,%,\
+	$(wildcard $(GEMFILES_DIR)/*.gemfile)))
+TEST_GEMFILES := $(GEMFILES:%=test-%)
+WATCH_GEMFILES := $(GEMFILES:%=watch-%)
 
 # Define a generic shell run wrapper
 # $1 - The command to run
@@ -57,6 +69,7 @@ all:
 	# Billomat
 	#
 	# install            Install the dependencies
+	# update             Update the local Gemset dependencies
 	# clean              Clean the dependencies
 	#
 	# test               Run the whole test suite
@@ -78,15 +91,22 @@ install:
 	# Install the dependencies
 	@$(MKDIR) -p $(VENDOR_DIR)
 	@$(call run-shell,$(BUNDLE) check || $(BUNDLE) install --path $(VENDOR_DIR))
+	@$(call run-shell,$(BUNDLE) exec $(APPRAISAL) install)
 
 update:
 	# Install the dependencies
 	@$(MKDIR) -p $(VENDOR_DIR)
 	@$(call run-shell,$(BUNDLE) update)
+	@$(call run-shell,$(BUNDLE) exec $(APPRAISAL) update)
 
 watch: install .interactive
 	# Watch for code changes and rerun the test suite
 	@$(call run-shell,$(BUNDLE) exec $(GUARD))
+
+$(WATCH_GEMFILES): GEMFILE=$(@:watch-%=%)
+$(WATCH_GEMFILES):
+	# Watch for code changes and rerun the test suite ($(GEMFILE))
+	@$(call run-shell,$(BUNDLE) exec $(APPRAISAL) $(GEMFILE) $(GUARD))
 
 test: \
 	test-specs \
@@ -95,6 +115,11 @@ test: \
 test-specs:
 	# Run the whole test suite
 	@$(call run-shell,$(BUNDLE) exec $(RAKE) stats spec)
+
+$(TEST_GEMFILES): GEMFILE=$(@:test-%=%)
+$(TEST_GEMFILES):
+	# Run the whole test suite ($(GEMFILE))
+	@$(call run-shell,$(BUNDLE) exec $(APPRAISAL) $(GEMFILE) $(RSPEC))
 
 test-style: \
 	test-style-ruby
@@ -107,7 +132,9 @@ test-style-ruby:
 clean:
 	# Clean the dependencies
 	@$(RM) -rf $(VENDOR_DIR)
-	@$(RM) -rf $(VENDOR_DIR)/Gemfile.lock
+	@$(RM) -rf Gemfile.lock
+	@$(RM) -rf $(GEMFILES_DIR)/vendor
+	@$(RM) -rf $(GEMFILES_DIR)/*.lock
 	@$(RM) -rf .bundle .yardoc coverage pkg Gemfile.lock doc/api \
 		.rspec_status
 
@@ -127,11 +154,11 @@ endif
 
 distclean: clean clean-containers clean-images
 
-shell:
+shell: install
 	# Run an interactive shell on the container
 	@$(call run-shell,$(BASH) -i)
 
-shell-irb:
+shell-irb: install
 	# Run an interactive IRB shell on the container
 	@$(call run-shell,bin/console)
 
