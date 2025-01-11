@@ -6,6 +6,7 @@ source 'https://rubygems.org'
 gemspec
 
 # Development dependencies
+gem 'appraisal', '~> 2.4'
 gem 'bundler', '~> 2.3'
 gem 'countless', '~> 1.1'
 gem 'guard-rspec', '~> 4.7'

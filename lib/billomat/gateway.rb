@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'rest-client'
-require 'json'
-
 module Billomat
   # Raised if something goes wrong during an API call.
   class GatewayError < StandardError
