@@ -15,7 +15,7 @@ module Billomat
   # Finish the auto loader configuration
   loader.setup
 
-  # Make sure to eager load all SDK constants
+  # Make sure to eager load all constants
   loader.eager_load
 
   class << self
