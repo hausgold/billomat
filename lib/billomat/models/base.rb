@@ -31,7 +31,7 @@ module Billomat
       # @param data [Hash] the attributes of the object
       # @return [Billomat::Models::Base] the record as an object
       #
-      # rubocop:disable Style/OpenStructUse because of the convenient
+      # rubocop:disable Style/OpenStructUse -- because of the convenient
       #   dynamic data access
       def initialize(data = {})
         @data = OpenStruct.new(data)
@@ -51,7 +51,7 @@ module Billomat
 
       # @return [TrueClass]
       #
-      # rubocop:disable Style/OpenStructUse because of the convenient
+      # rubocop:disable Style/OpenStructUse -- because of the convenient
       #   dynamic data access
       def create
         resp = Billomat::Gateway.new(
