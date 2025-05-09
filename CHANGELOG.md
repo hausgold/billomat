@@ -2,6 +2,7 @@
 
 * Corrected some RuboCop glitches (#30)
 * Upgraded the rubocop dependencies (#31)
+* Gracefully deal with non-JSON gateway error bodies (#32)
 
 ### 1.5.0 (30 January 2025)
 
