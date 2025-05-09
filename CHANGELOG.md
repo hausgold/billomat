@@ -1,8 +1,12 @@
 ### next
 
-* Corrected some RuboCop glitches (#30)
-* Upgraded the rubocop dependencies (#31)
-* Gracefully deal with non-JSON gateway error bodies (#32)
+* TODO: Replace this bullet point with an actual description of a change.
+
+### 1.5.1 (9 May 2025)
+
+* Corrected some RuboCop glitches ([#30](https://github.com/hausgold/billomat/pull/30))
+* Upgraded the rubocop dependencies ([#31](https://github.com/hausgold/billomat/pull/31))
+* Gracefully deal with non-JSON gateway error bodies ([#32](https://github.com/hausgold/billomat/pull/32))
 
 ### 1.5.0 (30 January 2025)
 
