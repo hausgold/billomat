@@ -16,11 +16,35 @@ RSpec.describe Billomat::Gateway do
     let(:rest_error) { RestClient::Exception.new(bad_response) }
     let(:error) { Billomat::GatewayError.new(rest_error) }
 
-    context 'with a body' do
+    context 'with a json body' do
       let(:bad_body) { '{"errors":{"error":"invalid secret"}}' }
 
       it 'returns the details' do
         expect(error.to_s).to match(/invalid secret/)
+      end
+    end
+
+    context 'with an html body' do
+      # include body bloating to be able to test prefix snipping
+      let(:bad_body) do
+        <<~HTML
+          <html>
+            <head>
+              <title>502 Bad Gateway</title>
+            </head>
+            <body>
+              <h1>Bad Gateway</h1>
+              <div>Gateway not responding</div>
+              #{'x' * 1024}
+            </body>
+          </html>
+        HTML
+      end
+
+      it 'returns the first 128 bytes of the body' do
+        expected_string = "RestClient::Exception ('#{bad_body[0, 127]}')"
+
+        expect(error.to_s).to eql(expected_string)
       end
     end
 
