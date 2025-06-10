@@ -53,6 +53,8 @@ module Billomat
       #
       # rubocop:disable Style/OpenStructUse -- because of the convenient
       #   dynamic data access
+      # rubocop:disable Naming/PredicateMethod -- because this method performs
+      #   an action, not a predicate check (bool is for error signaling)
       def create
         resp = Billomat::Gateway.new(
           :post, self.class.base_path, wrapped_data
@@ -64,8 +66,12 @@ module Billomat
       end
       alias create! create
       # rubocop:enable Style/OpenStructUse
+      # rubocop:enable Naming/PredicateMethod
 
       # @return [TrueClass]
+      #
+      # rubocop:disable Naming/PredicateMethod -- because this method performs
+      #   an action, not a predicate check (bool is for error signaling)
       def update
         path = "#{self.class.base_path}/#{id}"
         resp = Billomat::Gateway.new(:put, path, wrapped_data).run
@@ -74,8 +80,12 @@ module Billomat
         true
       end
       alias update! update
+      # rubocop:enable Naming/PredicateMethod
 
       # @return [TrueClass]
+      #
+      # rubocop:disable Naming/PredicateMethod -- because this method performs
+      #   an action, not a predicate check (bool is for error signaling)
       def delete
         path = "#{self.class.base_path}/#{id}"
         Billomat::Gateway.new(:delete, path).run
@@ -83,6 +93,7 @@ module Billomat
         true
       end
       alias delete! delete
+      # rubocop:enable Naming/PredicateMethod
 
       # @return [String, nil] the object's ID
       def id
