@@ -124,7 +124,7 @@ module Billomat
       #   invoice = Billomat::Models::Invoice.new(invoice_number: '123')
       #   invoice.invoice_number
       #   #=> '123'
-      def method_missing(method, *args, &block)
+      def method_missing(method, *args, &)
         return @data[method] if @data.to_h.key?(method)
 
         super
