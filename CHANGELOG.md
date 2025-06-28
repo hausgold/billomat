@@ -1,6 +1,7 @@
 ### next
 
 * Corrected some RuboCop glitches (#33)
+* Drop Ruby 2 and end of life Rails (<7.1) (#34)
 
 ### 1.5.1 (9 May 2025)
 
