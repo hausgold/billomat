@@ -1,7 +1,11 @@
 ### next
 
-* Corrected some RuboCop glitches (#33)
-* Drop Ruby 2 and end of life Rails (<7.1) (#34)
+* TODO: Replace this bullet point with an actual description of a change.
+
+### 2.0.0 (28 June 2025)
+
+* Corrected some RuboCop glitches ([#33](https://github.com/hausgold/billomat/pull/33))
+* Drop Ruby 2 and end of life Rails (<7.1) ([#34](https://github.com/hausgold/billomat/pull/34))
 
 ### 1.5.1 (9 May 2025)
 
