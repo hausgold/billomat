@@ -104,8 +104,6 @@ module Billomat
     end
 
     # @return [Billomat::Configuration] the global gem configuration
-    #
-    # :reek:UtilityFunction because it's a shorthand
     def config
       Billomat.configuration
     end
