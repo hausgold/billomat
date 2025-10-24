@@ -1,7 +1,11 @@
 ### next
 
-* Dropped Reek (#35)
-* Added support for Rails 8.1 (#36)
+* TODO: Replace this bullet point with an actual description of a change.
+
+### 2.1.0 (24 October 2025)
+
+* Dropped Reek ([#35](https://github.com/hausgold/billomat/pull/35))
+* Added support for Rails 8.1 ([#36](https://github.com/hausgold/billomat/pull/36))
 
 ### 2.0.0 (28 June 2025)
 
