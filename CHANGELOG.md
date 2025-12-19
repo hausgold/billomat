@@ -1,6 +1,10 @@
 ### next
 
-* Migrated to a shared Rubocop configuration for HAUSGOLD gems (#37)
+* TODO: Replace this bullet point with an actual description of a change.
+
+### 2.2.0 (19 December 2025)
+
+* Migrated to a shared Rubocop configuration for HAUSGOLD gems ([#37](https://github.com/hausgold/billomat/pull/37))
 
 ### 2.1.0 (24 October 2025)
 
