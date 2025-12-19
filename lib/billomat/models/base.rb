@@ -30,13 +30,9 @@ module Billomat
       #
       # @param data [Hash] the attributes of the object
       # @return [Billomat::Models::Base] the record as an object
-      #
-      # rubocop:disable Style/OpenStructUse -- because of the convenient
-      #   dynamic data access
       def initialize(data = {})
         @data = OpenStruct.new(data)
       end
-      # rubocop:enable Style/OpenStructUse
 
       # Persists the current object in the API.
       # When record is new it calls create, otherwise it saves the object.
@@ -51,8 +47,6 @@ module Billomat
 
       # @return [TrueClass]
       #
-      # rubocop:disable Style/OpenStructUse -- because of the convenient
-      #   dynamic data access
       # rubocop:disable Naming/PredicateMethod -- because this method performs
       #   an action, not a predicate check (bool is for error signaling)
       def create
@@ -65,7 +59,6 @@ module Billomat
         true
       end
       alias create! create
-      # rubocop:enable Style/OpenStructUse
       # rubocop:enable Naming/PredicateMethod
 
       # @return [TrueClass]
