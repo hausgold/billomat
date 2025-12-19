@@ -55,7 +55,7 @@ Billomat.configure do |config|
   # timeout in seconds
   config.timeout   = 5
 
-  # You can also configure a registerd app to increase your
+  # You can also configure a registered app to increase your
   # API call limit as described here:
   # https://www.billomat.com/en/api/basics/rate-limiting/
   config.app_id = '12345'
