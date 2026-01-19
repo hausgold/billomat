@@ -1,6 +1,10 @@
 ### next
 
-* Added the `ostruct` gem (#42)
+* TODO: Replace this bullet point with an actual description of a change.
+
+### 2.5.0 (19 January 2026)
+
+* Added the `ostruct` gem ([#42](https://github.com/hausgold/billomat/pull/42))
 
 ### 2.4.0 (7 January 2026)
 
