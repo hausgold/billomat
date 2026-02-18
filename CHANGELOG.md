@@ -1,7 +1,11 @@
 ### next
 
+* TODO: Replace this bullet point with an actual description of a change.
+
+### 2.7.0 (18 February 2026)
+
 * Dropped 3rd-level gem dependencies which are not directly used
-  by this gem (#44)
+  by this gem ([#44](https://github.com/hausgold/billomat/pull/44))
 
 ### 2.6.0 (28 January 2026)
 
