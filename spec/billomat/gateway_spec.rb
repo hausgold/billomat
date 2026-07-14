@@ -20,7 +20,7 @@ RSpec.describe Billomat::Gateway do
       let(:bad_body) { '{"errors":{"error":"invalid secret"}}' }
 
       it 'returns the details' do
-        expect(error.to_s).to match(/invalid secret/)
+        expect(error.to_s).to include('invalid secret')
       end
     end
 
