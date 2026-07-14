@@ -1,6 +1,10 @@
 ### next
 
-* Corrected some RuboCop glitches (#48)
+* TODO: Replace this bullet point with an actual description of a change.
+
+### 2.9.1 (14 July 2026)
+
+* Corrected some RuboCop glitches ([#48](https://github.com/hausgold/billomat/pull/48))
 
 ### 2.9.0 (20 May 2026)
 
