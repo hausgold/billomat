@@ -1,6 +1,10 @@
 ### next
 
-* Upgraded the simplecov gem to 1.3 (#49)
+* TODO: Replace this bullet point with an actual description of a change.
+
+### 2.10.0 (28 September 2026)
+
+* Upgraded the simplecov gem to 1.3 ([#49](https://github.com/hausgold/billomat/pull/49))
 
 ### 2.9.1 (14 July 2026)
 
